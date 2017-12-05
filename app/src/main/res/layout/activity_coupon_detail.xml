@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+    <LinearLayout
+        xmlns:android         = "http://schemas.android.com/apk/res/android"
+        android:orientation   = "vertical"
+        android:layout_width  = "match_parent"
+        android:layout_height = "match_parent"
+        android:weightSum     = "10"
+        android:gravity       = "center_vertical|center_horizontal">
+
+    <LinearLayout
+        xmlns:android         = "http://schemas.android.com/apk/res/android"
+        android:orientation   = "vertical"
+        android:layout_width  = "match_parent"
+        android:layout_height = "match_parent"
+        android:weightSum     = "1"
+        android:gravity       = "center_vertical|center_horizontal">
+
+        <TextView
+            android:layout_width   = "wrap_content"
+            android:layout_height  = "wrap_content"
+            android:textAppearance = "?android:attr/textAppearanceLarge"
+            android:text           = "Coupon Details"
+            android:layout_weight  = "0.07"
+            android:textStyle      = "bold" />
+
+        <!--  product name Label -->
+        <TextView android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#372c24"
+            android:text="Id"
+            android:textStyle = "bold"/>
+        <TextView android:id="@+id/id"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            />
+
+        <!--  price Label -->
+        <TextView android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#372c24"
+            android:text="Discount"
+            android:textStyle = "bold"/>
+        <TextView android:id="@+id/discount"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+        <TextView
+            android:layout_width   = "wrap_content"
+            android:layout_height  = "wrap_content"
+            android:textAppearance = "?android:attr/textAppearanceMedium"
+            android:text           = "Included Product"
+            android:layout_weight  = "0.07"
+            android:textStyle      = "italic" />
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="450dp"
+        android:id="@+id/couponListView" />
+
+
+</LinearLayout>
+    </ScrollView>

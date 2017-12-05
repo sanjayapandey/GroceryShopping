@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edu.und.sanjaya.database.groceryshopping.VerticalScrollview
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+    <LinearLayout
+        xmlns:android         = "http://schemas.android.com/apk/res/android"
+        android:orientation   = "vertical"
+        android:layout_width  = "match_parent"
+        android:layout_height = "match_parent"
+        android:weightSum     = "10"
+        android:gravity       = "center_vertical|center_horizontal">
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_height="wrap_content" android:orientation="vertical"
+            android:layout_width="fill_parent">
+
+            <TextView
+                android:layout_width   = "wrap_content"
+                android:layout_height  = "wrap_content"
+                android:textAppearance = "?android:attr/textAppearanceLarge"
+                android:text           = "Enter Details"
+                android:layout_weight  = "0.07"
+                android:textStyle      = "bold" />
+
+
+            <!--  price Label -->
+            <TextView android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#372c24"
+                android:text="Discount"
+                android:textStyle = "bold"/>
+            <EditText android:id="@+id/discount"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" />
+            <Button
+                android:layout_width  = "wrap_content"
+                android:layout_height = "wrap_content"
+                android:text          = "Save cupon"
+                android:id            = "@+id/save"
+                android:onClick="save"        />
+
+        </LinearLayout>
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp" >
+            <TableRow
+                android:id="@+id/tableRow2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/space"
+                    android:layout_width="30dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4dip"
+                    android:layout_weight="1"
+                    android:padding="3dip"
+                    android:text=""
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/name"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4dip"
+                    android:layout_weight="1"
+                    android:padding="3dip"
+                    android:text="Name"
+                    android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/price"
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:padding="3dip"
+                    android:layout_margin="4dip"
+                    android:layout_weight="2"
+                    android:textStyle      = "bold"
+                    android:text="Price" />
+
+            </TableRow>
+        </LinearLayout>
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="350dp"
+            android:id="@+id/listView"
+            android:layout_weight="10"
+            />
+
+    </LinearLayout>
+</edu.und.sanjaya.database.groceryshopping.VerticalScrollview>

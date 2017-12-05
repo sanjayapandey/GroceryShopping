@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Grocery Shopping</string>
+    <string name="action_product">Product List</string>
+    <string name="action_coupon">Coupon List</string>
+    <string name="action_product_detail">Product Details</string>
+    <string name="action_coupon_detail">Coupon Details</string>
+    <string name="action_shopping">Shopping</string>
+    <string name="action_main">Dashboard</string>
+    <string name="action_product_add">Add new product</string>
+    <string name="action_coupon_add">Add new coupon</string>
+    <string name="action_reset">Reset</string>
+</resources>

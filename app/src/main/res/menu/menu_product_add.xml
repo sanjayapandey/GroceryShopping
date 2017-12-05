@@ -1,0 +1,23 @@
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ProductAddActivity">
+
+    <item android:id="@+id/action_main"
+        android:title="@string/action_main"
+        android:orderInCategory="100"
+        app:showAsAction="never" />
+    <item android:id="@+id/action_product"
+        android:title="@string/action_product"
+        android:orderInCategory="100"
+        app:showAsAction="never" />
+    <item android:id="@+id/action_coupon"
+        android:title="@string/action_coupon"
+        android:orderInCategory="100"
+        app:showAsAction="never" />
+    <item android:id="@+id/action_shopping"
+        android:title="@string/action_shopping"
+        android:orderInCategory="100"
+        app:showAsAction="never" />
+</menu>
