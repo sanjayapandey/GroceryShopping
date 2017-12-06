@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ListAdapter;
 import android.widget.ListView;
@@ -28,11 +29,14 @@ import org.w3c.dom.Text;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ProductActivity extends AppCompatActivity {
     ArrayList<HashMap<String, String>> productList = new ArrayList<HashMap<String,String>>();
     private ProductDataSource datasource;
     private String TAG = "ProductActivity";
+    final Map<Integer,String> checkBoxValues = new HashMap<>();
+    final Map<Integer,String> priceValues = new HashMap<>();
     ListView list;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +53,15 @@ public class ProductActivity extends AppCompatActivity {
         startActivity(intent);
     }
     public void update(View arg0){
+
+        for (Map.Entry<Integer, String> pair : checkBoxValues.entrySet()) {
+            System.out.println("checkbox: "+pair.getKey() +" is: "+ pair.getValue());
+            System.out.println("Price:"+priceValues.get(pair.getKey()));
+            datasource.updateProduct(pair.getValue(),Double.valueOf(priceValues.get(pair.getKey())));
+            Log.i(TAG,"Updated: "+pair.getValue() + "and new price is: "+priceValues.get(pair.getKey()));
+        }
+
+        /*
         CheckBox cb;
         ListView mainListView = (ListView) findViewById(R.id.listView);
         for (int x = 0; x<mainListView.getChildCount();x++){
@@ -60,16 +73,11 @@ public class ProductActivity extends AppCompatActivity {
                 Log.i(TAG,"Updated:"+etPrice.getText().toString());
             }
         }
+        */
         Intent i = new Intent( ProductActivity.this, ProductActivity.class );
         startActivity( i );
         Toast.makeText(getApplicationContext(),"Purchase successfully!", Toast.LENGTH_LONG).show();
     }
-    public void onRadioButtonClicked(View arg0){
-        TableRow tablerow = (TableRow)arg0.getParent();
-        EditText price = (EditText) tablerow.getChildAt(2);
-        price.setEnabled(true);
-    }
-
     @Override
     public boolean onCreateOptionsMenu( Menu menu ) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -118,7 +126,7 @@ public class ProductActivity extends AppCompatActivity {
                     new int[]{R.id.checkbox, R.id.name, R.id.price}
             ){
                 @Override
-                public View getView(int position, View convertView, ViewGroup parent) {
+                public View getView(final int position, View convertView, ViewGroup parent) {
 
                     // get filled view from SimpleAdapter
                     View itemView=super.getView(position, convertView, parent);
@@ -128,36 +136,36 @@ public class ProductActivity extends AppCompatActivity {
                     final CheckBox cb = (CheckBox)itemView.findViewById(R.id.checkbox);
                     final TextView etName = (TextView) itemView.findViewById(R.id.name);
                     final TextView etPrice = (TextView) itemView.findViewById(R.id.price);
-                    etPrice.setEnabled(false);
 
-                    /*
                     cb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener(){
 
                         public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                             if(isChecked)
                             {
                                 //System.out.println("position checked: "+position);
-                                Product product = new Product(etName.getText().toString( ),
-                                        Double.valueOf(etPrice.getText().toString( )));
-                                checkBoxValues.put(position,product);
+
+                                checkBoxValues.put(position,etName.getText().toString( ));
+                                if(!priceValues.containsKey(position))
+                                priceValues.put(position,etPrice.getText().toString( ));
                             }
                             else
                             {
                                 //System.out.println("position unchecked: "+position);
                                 checkBoxValues.remove(position);
+                                priceValues.remove(position);
                             }
                         }
                     });
                     //REMEMBER: never set value before onclick listener. It will kill you. :)
                     if(checkBoxValues.containsKey(position)) {
                         cb.setChecked(true);
-                        //etPrice.setText(String.valueOf(checkBoxValues.get(position).getPrice()));
-                        etPrice.setEnabled(true);
+                        etPrice.setText(priceValues.get(position));
+
                     }else{
                         cb.setChecked(false);
-                        etPrice.setEnabled(false);
+                        priceValues.remove(position);
                     }
-                    */
+
 
                     tv.setOnClickListener( new View.OnClickListener( ) {
                         @Override
